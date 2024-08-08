@@ -1756,31 +1756,61 @@
       "type": "PREC_LEFT",
       "value": 1,
       "content": {
-        "type": "SEQ",
+        "type": "CHOICE",
         "members": [
           {
-            "type": "SYMBOL",
-            "name": "_indent"
-          },
-          {
-            "type": "CHOICE",
+            "type": "SEQ",
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "self_type"
+                "name": "_indent"
               },
               {
-                "type": "BLANK"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "self_type"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_block"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_outdent"
               }
             ]
           },
           {
-            "type": "SYMBOL",
-            "name": "_block"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_outdent"
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "{"
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_block"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "STRING",
+                "value": "}"
+              }
+            ]
           }
         ]
       }
@@ -4159,6 +4189,10 @@
           {
             "type": "SYMBOL",
             "name": "_annotated_type"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "literal_type"
           }
         ]
       }
