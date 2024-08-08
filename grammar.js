@@ -418,7 +418,8 @@ module.exports = grammar({
         PREC.control,
         choice(
           seq($._indent, optional($.self_type), $._block, $._outdent),
-          seq("{", optional($._block), "}")),
+          seq("{", optional($._block), "}"),
+        ),
       ),
 
     _extension_template_body: $ =>
@@ -877,7 +878,12 @@ module.exports = grammar({
     _infix_type_choice: $ =>
       prec.left(
         PREC.infix,
-        choice($.compound_type, $.infix_type, $._annotated_type, $.literal_type),
+        choice(
+          $.compound_type,
+          $.infix_type,
+          $._annotated_type,
+          $.literal_type,
+        ),
       ),
 
     infix_type: $ =>
